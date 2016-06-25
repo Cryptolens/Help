@@ -1,0 +1,12 @@
+{
+    "name": "wiki",
+    "dependencies": {
+        "sammy" : "^0.7.6",
+        "marked": "latest",
+        "bootstrap": "latest"
+    },
+    "authors": [
+        "Artem Los"
+    ],
+    "version": "0.1"
+}
