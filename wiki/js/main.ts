@@ -13,9 +13,10 @@ module main {
             var file = context.params['file'] as string;
             console.log(file);
             $.ajax({
-                url: "index.md",
+                url: file,
                 success: function (data) {
-                    document.write(data);
+                    var res = marked(data);
+                    $('#markdownout').html(res);
                 }
 
             });
@@ -31,8 +32,8 @@ module main {
 var app: Sammy.Application = Sammy();
 $(document).ready(new function () {
 
-    app.get('#/p/:file', main.Main.getFile);
-    app.get('#/', main.Main.default);
-    app.run('#/');
+    app.get('#:file', main.Main.getFile);
+    app.get('', main.Main.default);
+    app.run('');
 });
 

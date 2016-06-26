@@ -14,6 +14,7 @@
     "files": [
         "js/main.ts",
         "d.ts/jquery.d.ts",
-        "d.ts/sammyjs.d.ts"
+        "d.ts/sammyjs.d.ts",
+        "d.ts/marked.d.ts"
     ]
 }

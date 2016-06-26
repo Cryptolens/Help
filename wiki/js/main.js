@@ -8,9 +8,10 @@ var main;
             var file = context.params['file'];
             console.log(file);
             $.ajax({
-                url: "index.md",
+                url: file,
                 success: function (data) {
-                    document.write(data);
+                    var res = marked(data);
+                    $('#markdownout').html(res);
                 }
             });
         };
@@ -22,8 +23,8 @@ var main;
 })(main || (main = {}));
 var app = Sammy();
 $(document).ready(new function () {
-    app.get('#/p/:file', main.Main.getFile);
-    app.get('#/', main.Main.default);
-    app.run('#/');
+    app.get('#:file', main.Main.getFile);
+    app.get('', main.Main.default);
+    app.run('');
 });
 //# sourceMappingURL=main.js.map
