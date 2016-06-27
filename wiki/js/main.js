@@ -3,17 +3,40 @@ var main;
     var Main = (function () {
         function Main(parameters) {
         }
-        Main.getFile = function (context) {
-            console.log("print");
+        Main.loadFile = function (context) {
             var file = context.params['file'];
-            console.log(file);
+            Main.getFile(file);
+        };
+        Main.getFile = function (filename) {
+            $("body").hide();
             $.ajax({
-                url: file,
+                url: "md/" + filename + ".md",
                 success: function (data) {
                     var res = marked(data);
                     $('#markdownout').html(res);
+                },
+                error: Main.errorPage
+            });
+            $.ajax({
+                url: "md/" + filename + ".json",
+                success: function (rawData) {
+                    var data = JSON.parse(rawData);
+                    if (data["title"]) {
+                        document.title = data["title"];
+                        $("#title").html(data["title"]);
+                    }
+                    if (data["color"]) {
+                        $("#jumbo").css("background-color", data["color"]);
+                    }
+                    if (data["text"]) {
+                        $("#jumbo").css("color", data["text"]);
+                    }
+                    $("body").fadeIn(300);
                 }
             });
+        };
+        Main.errorPage = function () {
+            Main.getFile("404");
         };
         Main.default = function (context) {
         };
@@ -23,8 +46,8 @@ var main;
 })(main || (main = {}));
 var app = Sammy();
 $(document).ready(new function () {
-    app.get('#:file', main.Main.getFile);
-    app.get('', main.Main.default);
-    app.run('');
+    app.get('#:file', main.Main.loadFile);
+    app.get('#index', main.Main.default);
+    app.run('#index');
 });
 //# sourceMappingURL=main.js.map
