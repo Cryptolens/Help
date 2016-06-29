@@ -55,7 +55,7 @@ module main {
             Main.getFile("404");
         }
         static default(context: Sammy.EventContext) {
-            //
+            main.Main.getFile('index');
         }
 
     }
@@ -65,7 +65,8 @@ var app: Sammy.Application = Sammy();
 $(document).ready(new function () {
 
     app.get('#:file', main.Main.loadFile);
-    app.get('#index', main.Main.default);
-    app.run('#index');
+    app.get('', main.Main.default);
+
+    app.run('');
 });
 

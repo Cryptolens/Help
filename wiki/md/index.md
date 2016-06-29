@@ -5,8 +5,9 @@
         <div class="panel-body" style="background-color:#0066cc;">
             <h3 class="text-center" style="color:white;">Basic of SKM</h3> 
         </div>
-        </a>
+    </a>
     </div>
+    dadwd
 </div>
 <div class="col-md-4">
     <div class="panel panel-default">
@@ -21,4 +22,5 @@
             Hello
         </div>
     </div>
+</div>
 </div>

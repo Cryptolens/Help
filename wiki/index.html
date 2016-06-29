@@ -20,23 +20,28 @@
 </head>
 
 <body>
-<div  class="container" style="height:100px">
-  <div class="col-md-6"><p style="font-size:x-large;">SKM Tutorials</p></div>
+
+  <div class="container" style="height:100px; display:table;">
+    <span style="display:table-cell; vertical-align:middle;">
+      <div class="row">
+  <a class="col-md-6" href="#" style="text-decoration:none;"><p style="font-size:x-large;"><img src="images/favicon.png" width="50px" />SKM Tutorials</p></a>
   <div class="col-md-6"></div>
   <div class="clearfix"></div>
-</div>
-<div id="jumbo" class="jumbotron" style="background-color:#edf0f2;">
-  <div class="container">
-    <h1 id="title">
-    </h1>
+      </div>
+  </span>
   </div>
-</div>
+  <div id="jumbo" class="jumbotron" style="background-color:#edf0f2;">
+    <div class="container">
+      <h1 id="title">
+      </h1>
+    </div>
+  </div>
   <div class="container">
     <div id="markdownout"></div>
   </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/sammy/lib/min/sammy-latest.min.js"></script>
   <script src="bower_components/marked/lib/marked.js"></script>

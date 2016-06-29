@@ -39,6 +39,7 @@ var main;
             Main.getFile("404");
         };
         Main.default = function (context) {
+            main.Main.getFile('index');
         };
         return Main;
     }());
@@ -47,7 +48,7 @@ var main;
 var app = Sammy();
 $(document).ready(new function () {
     app.get('#:file', main.Main.loadFile);
-    app.get('#index', main.Main.default);
-    app.run('#index');
+    app.get('', main.Main.default);
+    app.run('');
 });
 //# sourceMappingURL=main.js.map
