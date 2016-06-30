@@ -18,10 +18,10 @@ module main {
         static loadFileAnchor(context: Sammy.EventContext) {
             var result = context.params["splat"];
             console.log(context.params);
-console.log("here");
+            console.log("here");
             console.log(result);
-             main.Main.getFile('index');
-            
+            main.Main.getFile('index');
+
         }
 
         /**
@@ -56,20 +56,29 @@ console.log("here");
                         $("#jumbo").css("color", data["text"]);
                     }
 
-                    if (data["showmenu"]) {
+                    if (data["showmenu"] && data["showmenu"] === "true") {
                         console.log("here");
                         $("#markdownout").removeClass("col-md-12").addClass("col-md-10");
-                        $("#menu").removeClass("hidden");
+                        $("#menu").removeClass().addClass("visible-lg visible-md col-md-2");
+                        $("#menu-nav").removeClass("hidden");
                     } else {
-                        $("#markdownout").removeClass("col-md-10").addClass("col-md-12");
+                        $("#markdownout").removeClass().addClass("col-md-12");
                         $("#menu").addClass("hidden");
+                        $("#menu-nav").addClass("hidden");
                     }
-
-                    $("body").fadeIn(300);
-                }
+                    main.Main.pageLoaded();
+                }, error: main.Main.pageLoaded
             });
         }
 
+        /**
+         * Executed when page is loaded (i.e. json and md files obtained).
+         */
+        static pageLoaded() {
+
+            $("body").fadeIn(300);
+            main.View.fixMenu();
+        }
         static errorPage() {
             // this may not fail, otherwise inf loop.
             Main.getFile("404");
@@ -77,7 +86,18 @@ console.log("here");
         static default(context: Sammy.EventContext) {
             main.Main.getFile('index');
         }
+    }
 
+    export class View {
+        static fixMenu() {
+            var offset: number = $("#markdownout").offset().top - $(document).scrollTop();
+
+            if (offset <= 0) {
+                offset = 0;
+            }
+
+            $("#menu-nav").css("top", offset + "px");
+        }
     }
 }
 
@@ -95,29 +115,23 @@ $(document).ready(new function () {
             $('#menu').css('top', $(this).scrollTop());
         });*/
 
-  /*  $('#sidebar').affix({
-        offset: {
-            top: 245
-        }
-    });
+    /*  $('#sidebar').affix({
+          offset: {
+              top: 245
+          }
+      });
+  
+      var $body = $(document.body);
+      var navHeight = 110;
+  
+      $body.scrollspy({
+          target: '#menu',
+          offset: navHeight
+      });*/
 
-    var $body = $(document.body);
-    var navHeight = 110;
+    main.View.fixMenu();
 
-    $body.scrollspy({
-        target: '#menu',
-        offset: navHeight
-    });*/
-
-    $(document).scroll(function(){
-        var offset = $("#markdownout").offset().top - $(document).scrollTop();
-
-        if(offset <= 0) {
-            offset = 0;
-        }
-        console.log(offset);
-        $("#menu-nav").css("top", offset + "px");
-    });
+    $(document).scroll(main.View.fixMenu);
 
 });
 
