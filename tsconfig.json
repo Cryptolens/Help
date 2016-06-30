@@ -1,5 +1,5 @@
 {
-     "compileOnSave": true,
+    "compileOnSave": true,
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
@@ -15,6 +15,7 @@
         "js/main.ts",
         "d.ts/jquery.d.ts",
         "d.ts/sammyjs.d.ts",
-        "d.ts/marked.d.ts"
+        "d.ts/marked.d.ts",
+        "d.ts/bootstrap.d.ts"
     ]
 }
