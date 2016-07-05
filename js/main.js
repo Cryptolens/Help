@@ -26,8 +26,7 @@ var main;
             });
             $.ajax({
                 url: "md/" + filename + ".json",
-                success: function (rawData) {
-                    var data = JSON.parse(rawData);
+                success: function (data) {
                     if (data["title"]) {
                         document.title = data["title"];
                         $("#title").html(data["title"]);
