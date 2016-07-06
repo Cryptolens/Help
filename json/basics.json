@@ -3,8 +3,5 @@
     "color": "#0066cc",
     "text": "white",
     "showmenu": "true",
-    "menu": {
-        "Introduction": "#basics",
-        "Web API": "#WebAPI"
-    }
+    "menu" : ".menu"
 }

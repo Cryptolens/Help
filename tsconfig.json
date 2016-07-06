@@ -4,7 +4,8 @@
         "target": "es5",
         "module": "commonjs",
         "sourceMap": true,
-        "removeComments": true
+        "removeComments": true,
+        "outFile": "js/modules.js"
     },
     "exclude": [
         "node_modules",
@@ -13,6 +14,7 @@
     ],
     "files": [
         "js/main.ts",
+        "js/storage.ts",
         "d.ts/jquery.d.ts",
         "d.ts/sammyjs.d.ts",
         "d.ts/marked.d.ts",

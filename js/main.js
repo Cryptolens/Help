@@ -46,28 +46,40 @@ var main;
                     if (data["text"]) {
                         $("#jumbo").css("color", data["text"]);
                     }
-                    if (data["showmenu"] && data["showmenu"] === "true") {
-                        console.log("here");
-                        $("#markdownout").removeClass("col-md-12").addClass("col-md-10");
-                        $("#menu").removeClass().addClass("visible-lg visible-md col-md-2");
-                        $("#menu-nav").removeClass("hidden");
-                    }
-                    else {
-                        $("#markdownout").removeClass().addClass("col-md-12");
-                        $("#menu").addClass("hidden");
-                        $("#menu-nav").addClass("hidden");
-                    }
-                    if (data["menu"]) {
-                        var menu = $("#menu-nav");
-                        menu.html("");
-                        $.each(data["menu"], function (i, item) {
-                            console.log(i + item);
-                            menu.append("<li><a href=\"" + item + "\">" + i + "</a></li>");
-                        });
-                    }
+                    this.loadMenu(data);
                     main.Main.pageLoaded();
                 }, error: main.Main.pageLoaded
             });
+        };
+        Main.loadMenu = function (data) {
+            if (data["showmenu"] && data["showmenu"] === "true") {
+                console.log("here");
+                $("#markdownout").removeClass("col-md-12").addClass("col-md-10");
+                $("#menu").removeClass().addClass("visible-lg visible-md col-md-2");
+                $("#menu-nav").removeClass("hidden");
+            }
+            else {
+                $("#markdownout").removeClass().addClass("col-md-12");
+                $("#menu").addClass("hidden");
+                $("#menu-nav").addClass("hidden");
+            }
+            if (data["menu"]) {
+                var menu = $("#menu-nav");
+                menu.html("");
+                var cacheMenu = main.storage.retrieve("skm.menu");
+                var menuData;
+                if (cacheMenu) {
+                    menuData = cacheMenu;
+                }
+                else {
+                    $.ajax({});
+                }
+                $.each(menuData["menu"], function (i, item) {
+                    console.log(i + item);
+                    menu.append("<li id=\"\"><a href=\"" + item + "\">" + i + "</a></li>");
+                });
+                $();
+            }
         };
         Main.pageLoaded = function () {
             $("body").fadeIn(300);
