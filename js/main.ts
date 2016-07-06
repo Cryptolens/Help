@@ -43,7 +43,7 @@ module main {
                 url: "md/" + filename + ".md",
                 success: function (data) {
                     var res = marked(data);
-                    $('#markdownout').html(res);
+                    $('#markdowcontent').html(res);
                 },
                 error: Main.errorPage
             });
@@ -67,6 +67,7 @@ module main {
                     if (data["text"]) {
                         $("#jumbo").css("color", data["text"]);
                     }
+
 
                     main.Main.loadMenu(data);
 
@@ -94,30 +95,50 @@ module main {
                 var cacheMenu = storage.retrieve("skm.menu");
 
                 if (cacheMenu) {
-                    main.Main.displayMenuFromData(cacheMenu);
+                    main.Main.displayMenuFromData(cacheMenu, data);
                 } else {
                     $.ajax({
                         dataType: "json",
-                        url: `json/${data["menu"]}.json`, 
-                        success: function(data){
-                            storage.store("skm.menu", data,  10);
-                            main.Main.displayMenuFromData(data);
+                        url: `json/${data["menu"]}.json`,
+                        success: function (freshMenu) {
+                            storage.store("skm.menu", freshMenu, 10);
+                            main.Main.displayMenuFromData(freshMenu, data);
                         }
                     });
                 }
+            } else {
+                $("#nav-bottom-prev").hide();
+                $("#nav-bottom-next").hide();
             }
         }
 
-        private static displayMenuFromData(data) {
+        private static displayMenuFromData(data, pageJSON: any) {
+
+            console.log("data-menu");
+            console.log(data);
             var menu = $("#menu-nav");
             menu.html(""); //clear
+            var link2name = {};
             $.each(data, function (i, item) {
-                console.log(i + item);
                 menu.append(`<li url="${item}"><a href="${item}">${i}</a></li>`);
+                link2name[item] =  i;
             });
-            console.log(window.location.hash);
-          
-            $(`li[url^='${window.location.hash}'`).addClass("active");
+
+            $(`li[url^='${window.location.hash}']`).addClass("active");
+
+            if (pageJSON["prev"]) {
+                $("#nav-bottom-prev").html(`<a href="${pageJSON["prev"]}"><span aria-hidden="true">&larr;</span> ${link2name[pageJSON["prev"]]}</a>`)
+                                     .show();
+            } else {
+                $("#nav-bottom-prev").hide();
+            }
+
+            if (pageJSON["next"]) {
+                $("#nav-bottom-next").html(`<a href="${pageJSON["next"]}">${link2name[pageJSON["next"]]}<span aria-hidden="true">&rarr;</span></a>`)
+                                     .show();
+            } else {
+                $("#nav-bottom-next").hide();
+            }
         }
 
         /**
@@ -137,13 +158,14 @@ module main {
     }
 
     export class View {
+        /**
+         * Ensures that the vertical menu follows the body, i.e. markdownout.
+         */
         static fixMenu() {
             var offset: number = $("#markdownout").offset().top - $(document).scrollTop();
-
-            if (offset <= 0) {
-                offset = 0;
+            if (offset <= 21) {
+                offset = 21;
             }
-
             $("#menu-nav").css("top", offset + "px");
         }
     }
