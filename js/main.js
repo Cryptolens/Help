@@ -16,6 +16,10 @@ var main;
         };
         Main.getFile = function (filename) {
             $("body").hide();
+            this.loadPageMD(filename);
+            this.loadPageJSON(filename);
+        };
+        Main.loadPageMD = function (filename) {
             $.ajax({
                 url: "md/" + filename + ".md",
                 success: function (data) {
@@ -24,13 +28,18 @@ var main;
                 },
                 error: Main.errorPage
             });
+        };
+        Main.loadPageJSON = function (filename) {
             $.ajax({
-                url: "md/" + filename + ".json",
+                dataType: "json",
+                url: "json/" + filename + ".json",
                 success: function (data) {
+                    console.log(data);
                     if (data["title"]) {
                         document.title = data["title"];
                         $("#title").html(data["title"]);
                     }
+                    console.log(data["color"]);
                     if (data["color"]) {
                         $("#jumbo").css("background-color", data["color"]);
                     }
@@ -47,6 +56,14 @@ var main;
                         $("#markdownout").removeClass().addClass("col-md-12");
                         $("#menu").addClass("hidden");
                         $("#menu-nav").addClass("hidden");
+                    }
+                    if (data["menu"]) {
+                        var menu = $("#menu-nav");
+                        menu.html("");
+                        $.each(data["menu"], function (i, item) {
+                            console.log(i + item);
+                            menu.append("<li><a href=\"" + item + "\">" + i + "</a></li>");
+                        });
                     }
                     main.Main.pageLoaded();
                 }, error: main.Main.pageLoaded

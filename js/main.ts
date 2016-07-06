@@ -31,6 +31,13 @@ module main {
          */
         static getFile(filename: string) {
             $("body").hide();
+
+            this.loadPageMD(filename);
+            this.loadPageJSON(filename);
+
+        }
+
+        private static loadPageMD(filename: string) {
             $.ajax({
                 url: "md/" + filename + ".md",
                 success: function (data) {
@@ -39,15 +46,20 @@ module main {
                 },
                 error: Main.errorPage
             });
+        }
 
+        private static loadPageJSON(filename: string) {
             $.ajax({
-                url: "md/" + filename + ".json",
+                dataType:"json",
+                url: "json/" + filename + ".json",
                 success: function (data) {
+                    console.log(data);
+
                     if (data["title"]) {
                         document.title = data["title"];
                         $("#title").html(data["title"]);
                     }
-
+                    console.log(data["color"]);
                     if (data["color"]) {
                         $("#jumbo").css("background-color", data["color"]);
                     }
@@ -65,6 +77,17 @@ module main {
                         $("#menu").addClass("hidden");
                         $("#menu-nav").addClass("hidden");
                     }
+
+                    if (data["menu"]) {
+                        var menu = $("#menu-nav");
+                        menu.html(""); //clear
+
+                        $.each(data["menu"], function (i, item) {
+                            console.log(i + item);
+                            menu.append(`<li><a href="${item}">${i}</a></li>`);
+                        });
+                    }
+
                     main.Main.pageLoaded();
                 }, error: main.Main.pageLoaded
             });
@@ -74,7 +97,6 @@ module main {
          * Executed when page is loaded (i.e. json and md files obtained).
          */
         static pageLoaded() {
-
             $("body").fadeIn(300);
             main.View.fixMenu();
         }

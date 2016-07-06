@@ -1,0 +1,10 @@
+{
+    "title": "Basics of SKM",
+    "color": "#0066cc",
+    "text": "white",
+    "showmenu": "true",
+    "menu": {
+        "Introduction": "#basics",
+        "Web API": "#WebAPI"
+    }
+}
