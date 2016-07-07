@@ -4,6 +4,6 @@
     "text": "white",
     "showmenu": "true",
     "menu" : ".menu",
-    "next": "#prodkeys",
-    "prev": null
+    "next": "#webapi",
+    "prev": "#basics"
 }

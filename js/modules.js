@@ -144,6 +144,7 @@ $(document).ready(new function () {
     app.run('');
     main.View.fixMenu();
     $(document).scroll(main.View.fixMenu);
+    $(window).resize(main.View.fixMenu);
 });
 var main;
 (function (main) {

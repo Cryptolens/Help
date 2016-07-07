@@ -204,6 +204,7 @@ $(document).ready(new function () {
     main.View.fixMenu();
 
     $(document).scroll(main.View.fixMenu);
+    $(window).resize(main.View.fixMenu);
 
 });
 
