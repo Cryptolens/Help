@@ -7,7 +7,8 @@
         </div>
     </a>
     </div>
-    dadwd
+    The basic concepts of SKM are described, which should give you an general
+    picture of the system.
 </div>
 <div class="col-md-4">
     <div class="panel panel-default">
