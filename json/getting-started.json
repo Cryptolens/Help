@@ -1,0 +1,9 @@
+{
+    "title": "Getting Started",
+    "color": "#009933",
+    "text": "white",
+    "showmenu": "true",
+    "menu" : ".gettingstarted.menu",
+    "next": "#create-account",
+    "prev": null
+}

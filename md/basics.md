@@ -1,5 +1,5 @@
 
-<img src="/images/skmoverview3.png" width="100%" />
+<img src="/images/skmoverview3.png" width="80%" />
 
 Before we dig into the specifics, let's look at how SKM works.
 
