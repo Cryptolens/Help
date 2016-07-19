@@ -4,6 +4,6 @@
     "text": "white",
     "showmenu": "true",
     "menu" : ".gettingstarted.menu",
-    "next": "#skm-client-api",
-    "prev": "#getting-started"
+    "next": null,
+    "prev": "#create-account"
 }

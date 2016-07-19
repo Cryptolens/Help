@@ -18,12 +18,16 @@
         </div>
     </a>
     </div>
+    A practical step-by-step tutorial to get SKM to work in your own application.
 </div>
 <div class="col-md-4">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            Hello
+      <div class="panel panel-default">
+       <a href="#licensetypes" style="text-decoration:none;">
+        <div class="panel-body" style="background-color: #ff9900;">
+            <h3 class="text-center" style="color:white;">Licensing Models</h3> 
         </div>
+    </a>
     </div>
+    An overview of various licensing models and the way they can be implemented.
 </div>
 </div>
