@@ -64,7 +64,7 @@ var main;
                 $("#menu-nav").addClass("hidden");
             }
             if (data["menu"]) {
-                var cacheMenu = main.storage.retrieve("skm.menu");
+                var cacheMenu = main.storage.retrieve("skm.menu." + data["menu"]);
                 if (cacheMenu) {
                     main.Main.displayMenuFromData(cacheMenu, data);
                 }
@@ -73,7 +73,7 @@ var main;
                         dataType: "json",
                         url: "json/" + data["menu"] + ".json",
                         success: function (freshMenu) {
-                            main.storage.store("skm.menu", freshMenu, 10);
+                            main.storage.store("skm.menu." + data["menu"], freshMenu, 10);
                             main.Main.displayMenuFromData(freshMenu, data);
                         }
                     });

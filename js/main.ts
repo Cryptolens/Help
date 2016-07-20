@@ -92,7 +92,7 @@ module main {
 
             if (data["menu"]) {
 
-                var cacheMenu = storage.retrieve("skm.menu");
+                var cacheMenu = storage.retrieve(`skm.menu.${data["menu"]}`);
 
                 if (cacheMenu) {
                     main.Main.displayMenuFromData(cacheMenu, data);
@@ -101,7 +101,7 @@ module main {
                         dataType: "json",
                         url: `json/${data["menu"]}.json`,
                         success: function (freshMenu) {
-                            storage.store("skm.menu", freshMenu, 10);
+                            storage.store(`skm.menu.${data["menu"]}`, freshMenu, 10);
                             main.Main.displayMenuFromData(freshMenu, data);
                         }
                     });
