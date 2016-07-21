@@ -4,6 +4,6 @@
     "text": "white",
     "showmenu": "true",
     "menu" : ".licensetypes.menu",
-    "next": "#perpetual",
-    "prev": null
+    "next": "#subscription",
+    "prev": "#licensetypes"
 }
