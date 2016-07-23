@@ -1,3 +1,5 @@
+# Create an Account
+
 If you've already used SKM Client API (aka SKGL Extension), you might recognize that you need things such as **access token** and **productId**.
 Basically, you need some way of letting [Web API](#webapi) know that you are you, and the product/license you want to use.
 

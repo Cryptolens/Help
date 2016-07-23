@@ -4,6 +4,6 @@
     "text": "white",
     "showmenu": "true",
     "menu" : ".gettingstarted.menu",
-    "next": null,
-    "prev": "#skm-client-api"
+    "next": "#access-token",
+    "prev": "#new-product"
 }

@@ -2,5 +2,7 @@
         "Introduction": "#getting-started",
         "Create an Account": "#create-account",
         "SKM Client API": "#skm-client-api",
-        "Adding Code": "#insert-code"
+        "Create a Product": "#new-product",
+        "Adding Code": "#insert-code",
+        "Access Tokens": "#access-token"
 }
