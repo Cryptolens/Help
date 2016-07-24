@@ -11,4 +11,14 @@ In case you kept the code as it is (without replacing the token and pubkey with 
 you can test the following:
 
 * `IWXAZ-FVMOD-KBZQU-DKUFW` - all features in one years since this tutorial was written
-* `IYVOO-JCWXQ-LCRBI-ZAIQZ` - all features but the recorder with no time constraint. 
+* `IYVOO-JCWXQ-LCRBI-ZAIQZ` - all features but the recorder with no time constraint.
+
+## Done!
+
+You have successfully completed this tutorial.
+Please check various 
+<a href="#licensetypes" target="blank">licensing models</a>, look through
+our <a href="https://support.serialkeymanager.com/" target="blank">knowledge base</a> or
+ask a question on our <a href="https://support.serialkeymanager.com/forums" target="blank">forum</a>.
+
+Good luck! :) 
