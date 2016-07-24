@@ -4,5 +4,7 @@
         "SKM Client API": "#skm-client-api",
         "Create a Product": "#new-product",
         "Adding Code": "#insert-code",
-        "Access Tokens": "#access-token"
+        "Access Tokens": "#access-token",
+        "Public Key":"#pubkey",
+        "Create a Key":"#create-license"
 }
