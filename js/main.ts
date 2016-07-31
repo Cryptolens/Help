@@ -44,6 +44,8 @@ module main {
                 success: function (data) {
                     var res = marked(data);
                     $('#markdowcontent').html(res);
+                    ga('set', 'page', `/${filename}`);
+                    ga('send', 'pageview');
                 },
                 error: Main.errorPage
             });
