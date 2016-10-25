@@ -9,9 +9,6 @@ var main;
         };
         Main.loadFileAnchor = function (context) {
             var result = context.params["splat"];
-            console.log(context.params);
-            console.log("here");
-            console.log(result);
             main.Main.getFile('index');
         };
         Main.getFile = function (filename) {
@@ -36,12 +33,10 @@ var main;
                 dataType: "json",
                 url: "json/" + filename + ".json",
                 success: function (data) {
-                    console.log(data);
                     if (data["title"]) {
                         document.title = data["title"];
                         $("#title").html(data["title"]);
                     }
-                    console.log(data["color"]);
                     if (data["color"]) {
                         $("#jumbo").css("background-color", data["color"]);
                     }
@@ -55,7 +50,6 @@ var main;
         };
         Main.loadMenu = function (data) {
             if (data["showmenu"] && data["showmenu"] === "true") {
-                console.log("here");
                 $("#markdownout").removeClass("col-md-12").addClass("col-md-10");
                 $("#menu").removeClass().addClass("visible-lg visible-md col-md-2");
                 $("#menu-nav").removeClass("hidden");
@@ -87,8 +81,6 @@ var main;
             }
         };
         Main.displayMenuFromData = function (data, pageJSON) {
-            console.log("data-menu");
-            console.log(data);
             var menu = $("#menu-nav");
             menu.html("");
             var link2name = {};

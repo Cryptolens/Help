@@ -18,9 +18,6 @@ module main {
 
         static loadFileAnchor(context: Sammy.EventContext) {
             var result = context.params["splat"];
-            console.log(context.params);
-            console.log("here");
-            console.log(result);
             main.Main.getFile('index');
 
         }
@@ -56,13 +53,12 @@ module main {
                 dataType: "json",
                 url: "json/" + filename + ".json",
                 success: function (data) {
-                    console.log(data);
 
                     if (data["title"]) {
                         document.title = data["title"];
                         $("#title").html(data["title"]);
                     }
-                    console.log(data["color"]);
+                   
                     if (data["color"]) {
                         $("#jumbo").css("background-color", data["color"]);
                     }
@@ -70,9 +66,7 @@ module main {
                         $("#jumbo").css("color", data["text"]);
                     }
 
-
                     main.Main.loadMenu(data);
-
 
                     main.Main.pageLoaded();
                 }, error: main.Main.pageLoaded
@@ -82,7 +76,6 @@ module main {
         private static loadMenu(data: any) {
 
             if (data["showmenu"] && data["showmenu"] === "true") {
-                console.log("here");
                 $("#markdownout").removeClass("col-md-12").addClass("col-md-10");
                 $("#menu").removeClass().addClass("visible-lg visible-md col-md-2");
                 $("#menu-nav").removeClass("hidden");
@@ -116,8 +109,6 @@ module main {
 
         private static displayMenuFromData(data, pageJSON: any) {
 
-            console.log("data-menu");
-            console.log(data);
             var menu = $("#menu-nav");
             menu.html(""); //clear
             var link2name = {};
