@@ -1,5 +1,5 @@
 There are three types of licenses. "Source code" are all files in this repository except for those that are in the "tutorials" and
-"d.ts" folders and except those that have the markdown (.md) extension. “Content” are all files that are located in the “tutorials”
+"d.ts" folders and except those that have the markdown (.md) extension. "Content" are all files that are located in the "tutorials"
 folder and/or that have a markdown (.md) extension. "Third party" are all files that are located in the "d.ts" folder.
 
 "Source code" is distributed using the BSD 3-Clause License, shown below:
@@ -33,7 +33,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"Content" is copyright protected and/or design protected where applicable. The intellectual property ("IP") owner is Artem Los. "Content" may be referenced (i.e. an excerpt of the text may be included on a website) provided that a clear reference is given to this page and the “IP” owner. For additional permission, please contact the "IP" owner.
+"Content" is copyright protected and/or design protected where applicable. The intellectual property ("IP") owner is Artem Los. "Content" may be referenced (i.e. an excerpt of the text may be included on a website) provided that a clear reference is given to this page and the "IP" owner. For additional permission, please contact the "IP" owner.
 
 "Third party" are distributed by the MIT License. The intellectual property owners of the files are:
 * bootstrap.d.ts - Boris Yankov
