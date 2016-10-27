@@ -1,6 +1,6 @@
-There are three types of licenses. "Source code" are all files in this repository except for those that are in the "tutorials" and
-"d.ts" folders and except those that have the markdown (.md) extension. "Content" are all files that are located in the "tutorials"
-folder and/or that have a markdown (.md) extension. "Third party" are all files that are located in the "d.ts" folder.
+There are three types of licenses. "Source code" are all files in this repository except for those that are in the "tutorials", "images"
+and "d.ts" folders and except those that have the markdown (.md) extension. "Content" are all files that are located in the "tutorials"
+and/or "images" folder and/or that have a markdown (.md) extension. "Third party" are all files that are located in the "d.ts" folder.
 
 "Source code" is distributed using the BSD 3-Clause License, shown below:
 BSD 3-Clause License
