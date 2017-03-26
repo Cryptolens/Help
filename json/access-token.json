@@ -4,6 +4,6 @@
     "text": "white",
     "showmenu": "true",
     "menu" : ".gettingstarted.menu",
-    "next": null,
+    "next": "#pubkey",
     "prev": "#insert-code"
 }
