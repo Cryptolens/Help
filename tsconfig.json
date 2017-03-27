@@ -17,6 +17,7 @@
         "js/storage.ts",
         "js/search.ts",
         "d.ts/jquery.d.ts",
+        "d.ts/toastr.d.ts",
         "d.ts/sammyjs.d.ts",
         "d.ts/marked.d.ts",
         "d.ts/bootstrap.d.ts",

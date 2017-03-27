@@ -169,25 +169,37 @@ var main;
     var search = (function () {
         function search() {
         }
-        search.findTerm = function (text, fileExtension) {
-            $.ajax({
+        search.searchDone = function (text) {
+            console.log(search.listOfFiles.sort(search.compareSecondColumn));
+        };
+        search.crawl = function (text, fileExtension) {
+            $.when($.ajax({
                 url: "md/",
                 success: function (data) {
                     $(data).find("a:contains('." + fileExtension + "')").each(function () {
-                        search.findInFile(text, this.text());
+                        search.init++;
+                        search.findInFile(text, $(this).text());
                     });
+                }, error: function () { }
+            })).done(function () {
+                if (search.counter == search.init) {
+                    search.searchDone(text);
                 }
             });
         };
         search.findInFile = function (text, file) {
-            $.get({
+            $.when($.get({
                 url: "md/" + file,
                 success: function (data) {
-                    var counter = $(data).find("*:contains(" + text + ")").length;
-                    console.log(counter);
-                    if (counter >= 0) {
+                    var counter = (data.split("str").length - 1);
+                    if (counter > 0) {
                         search.listOfFiles.push([file, counter]);
                     }
+                    search.counter++;
+                }
+            })).done(function () {
+                if (search.counter == search.init) {
+                    search.searchDone(text);
                 }
             });
         };
@@ -196,10 +208,13 @@ var main;
                 return 0;
             }
             else {
-                return (a[1] < b[1]) ? -1 : 1;
+                return (a[1] > b[1]) ? -1 : 1;
             }
         };
         search.listOfFiles = [];
+        search.finished = [];
+        search.init = 0;
+        search.counter = 0;
         return search;
     }());
     main.search = search;
