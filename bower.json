@@ -3,7 +3,8 @@
     "dependencies": {
         "sammy" : "^0.7.6",
         "marked": "latest",
-        "bootstrap": "latest"
+        "bootstrap": "latest",
+        "toastr":"latest"
     },
     "authors": [
         "Artem Los"

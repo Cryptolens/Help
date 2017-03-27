@@ -164,4 +164,44 @@ var main;
     }());
     main.storage = storage;
 })(main || (main = {}));
+var main;
+(function (main) {
+    var search = (function () {
+        function search() {
+        }
+        search.findTerm = function (text, fileExtension) {
+            $.ajax({
+                url: "md/",
+                success: function (data) {
+                    $(data).find("a:contains('." + fileExtension + "')").each(function () {
+                        search.findInFile(text, this.text());
+                    });
+                }
+            });
+        };
+        search.findInFile = function (text, file) {
+            $.get({
+                url: "md/" + file,
+                success: function (data) {
+                    var counter = $(data).find("*:contains(" + text + ")").length;
+                    console.log(counter);
+                    if (counter >= 0) {
+                        search.listOfFiles.push([file, counter]);
+                    }
+                }
+            });
+        };
+        search.compareSecondColumn = function (a, b) {
+            if (a[1] === b[1]) {
+                return 0;
+            }
+            else {
+                return (a[1] < b[1]) ? -1 : 1;
+            }
+        };
+        search.listOfFiles = [];
+        return search;
+    }());
+    main.search = search;
+})(main || (main = {}));
 //# sourceMappingURL=modules.js.map

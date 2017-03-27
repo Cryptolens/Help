@@ -15,6 +15,7 @@
     "files": [
         "js/main.ts",
         "js/storage.ts",
+        "js/search.ts",
         "d.ts/jquery.d.ts",
         "d.ts/sammyjs.d.ts",
         "d.ts/marked.d.ts",
