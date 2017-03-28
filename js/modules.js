@@ -1,5 +1,121 @@
 var main;
 (function (main) {
+    var storage = (function () {
+        function storage() {
+        }
+        storage.store = function (key, value, expiresMin) {
+            var data = JSON.stringify([value, new Date().getTime() + expiresMin * 60 * 1000]);
+            localStorage.setItem(key, data);
+        };
+        storage.retrieve = function (key) {
+            var data = localStorage.getItem(key);
+            if (data == null) {
+                return null;
+            }
+            var json = JSON.parse(data);
+            if (new Date().getTime() < json[1]) {
+                return json[0];
+            }
+            return localStorage.removeItem(key);
+        };
+        return storage;
+    }());
+    main.storage = storage;
+})(main || (main = {}));
+var main;
+(function (main) {
+    var search = (function () {
+        function search() {
+        }
+        search.searchDone = function (text) {
+            console.log(text);
+            console.log(search.listOfFiles.sort(search.compareSecondColumn));
+            if (search.listOfFiles.length == 0) {
+                $('#markdowcontent').html("No relevant articles found.");
+                return;
+            }
+            for (var i = 0; i < search.listOfFiles.length; i++) {
+                $('#markdowcontent').html(search.listOfFiles[i][0]);
+            }
+        };
+        search.handleSearch = function (context) {
+            var query = context.params['query'];
+            search.listOfFiles = [];
+            search.crawl(query, "md");
+            $('#markdowcontent').html("Loading...");
+        };
+        search.crawl = function (text, fileExtension) {
+            $.when($.ajax({
+                url: "md/",
+                success: function (data) {
+                    $(data).find("a:contains('." + fileExtension + "')").each(function () {
+                        search.init++;
+                        search.findInFile(text, $(this).text());
+                    });
+                }, error: function () { }
+            })).done(function () {
+                if (search.counter == search.init) {
+                    search.searchDone(text);
+                }
+            });
+        };
+        search.findInFile = function (text, file) {
+            var fileWithoutExtension = file.split(".")[0];
+            $.when($.get({
+                url: "md/" + file,
+                success: function (data) {
+                    var counter = (data.split(text).length - 1);
+                    if (counter > 0) {
+                        search.listOfFiles.push([file, counter]);
+                        if (!search.containsItem(search.listOfMeta, file)) {
+                            $.when($.get({
+                                url: "json/" + (fileWithoutExtension + ".json"),
+                                success: function (data) {
+                                    search.listOfMeta.push([file, JSON.parse(data)["title"]]);
+                                    search.counter++;
+                                }
+                            })).done(function () {
+                                if (search.counter == search.init) {
+                                    search.searchDone(text);
+                                }
+                            });
+                        }
+                    }
+                    search.counter++;
+                }
+            })).done(function () {
+                if (search.counter == search.init) {
+                    search.searchDone(text);
+                }
+            });
+        };
+        search.compareSecondColumn = function (a, b) {
+            if (a[1] === b[1]) {
+                return 0;
+            }
+            else {
+                return (a[1] > b[1]) ? -1 : 1;
+            }
+        };
+        search.containsItem = function (list, item) {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i][0] == item) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        search.listOfFiles = [];
+        search.finished = [];
+        search.init = 0;
+        search.counter = 0;
+        search.listOfMeta = [];
+        return search;
+    }());
+    main.search = search;
+})(main || (main = {}));
+var main;
+(function (main) {
     var Main = (function () {
         function Main(parameters) {
         }
@@ -133,6 +249,7 @@ var main;
 })(main || (main = {}));
 var app = Sammy();
 $(document).ready(new function () {
+    app.get('#/search/:query', main.search.handleSearch);
     app.get('#:file', main.Main.loadFile);
     app.get('', main.Main.default);
     app.run('');
@@ -140,83 +257,4 @@ $(document).ready(new function () {
     $(document).scroll(main.View.fixMenu);
     $(window).resize(main.View.fixMenu);
 });
-var main;
-(function (main) {
-    var storage = (function () {
-        function storage() {
-        }
-        storage.store = function (key, value, expiresMin) {
-            var data = JSON.stringify([value, new Date().getTime() + expiresMin * 60 * 1000]);
-            localStorage.setItem(key, data);
-        };
-        storage.retrieve = function (key) {
-            var data = localStorage.getItem(key);
-            if (data == null) {
-                return null;
-            }
-            var json = JSON.parse(data);
-            if (new Date().getTime() < json[1]) {
-                return json[0];
-            }
-            return localStorage.removeItem(key);
-        };
-        return storage;
-    }());
-    main.storage = storage;
-})(main || (main = {}));
-var main;
-(function (main) {
-    var search = (function () {
-        function search() {
-        }
-        search.searchDone = function (text) {
-            console.log(search.listOfFiles.sort(search.compareSecondColumn));
-        };
-        search.crawl = function (text, fileExtension) {
-            $.when($.ajax({
-                url: "md/",
-                success: function (data) {
-                    $(data).find("a:contains('." + fileExtension + "')").each(function () {
-                        search.init++;
-                        search.findInFile(text, $(this).text());
-                    });
-                }, error: function () { }
-            })).done(function () {
-                if (search.counter == search.init) {
-                    search.searchDone(text);
-                }
-            });
-        };
-        search.findInFile = function (text, file) {
-            $.when($.get({
-                url: "md/" + file,
-                success: function (data) {
-                    var counter = (data.split("str").length - 1);
-                    if (counter > 0) {
-                        search.listOfFiles.push([file, counter]);
-                    }
-                    search.counter++;
-                }
-            })).done(function () {
-                if (search.counter == search.init) {
-                    search.searchDone(text);
-                }
-            });
-        };
-        search.compareSecondColumn = function (a, b) {
-            if (a[1] === b[1]) {
-                return 0;
-            }
-            else {
-                return (a[1] > b[1]) ? -1 : 1;
-            }
-        };
-        search.listOfFiles = [];
-        search.finished = [];
-        search.init = 0;
-        search.counter = 0;
-        return search;
-    }());
-    main.search = search;
-})(main || (main = {}));
 //# sourceMappingURL=modules.js.map

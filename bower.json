@@ -1,7 +1,7 @@
 {
     "name": "wiki",
     "dependencies": {
-        "sammy" : "^0.7.6",
+        "sammy" : "latest",
         "marked": "latest",
         "bootstrap": "latest",
         "toastr":"latest"

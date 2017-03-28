@@ -58,7 +58,7 @@ module main {
                         document.title = data["title"];
                         $("#title").html(data["title"]);
                     }
-                   
+
                     if (data["color"]) {
                         $("#jumbo").css("background-color", data["color"]);
                     }
@@ -114,21 +114,21 @@ module main {
             var link2name = {};
             $.each(data, function (i, item) {
                 menu.append(`<li url="${item}"><a href="${item}">${i}</a></li>`);
-                link2name[item] =  i;
+                link2name[item] = i;
             });
 
             $(`li[url^='${window.location.hash}']`).addClass("active");
 
             if (pageJSON["prev"]) {
                 $("#nav-bottom-prev").html(`<a href="${pageJSON["prev"]}"><span aria-hidden="true">&larr;</span> ${link2name[pageJSON["prev"]]}</a>`)
-                                     .show();
+                    .show();
             } else {
                 $("#nav-bottom-prev").hide();
             }
 
             if (pageJSON["next"]) {
                 $("#nav-bottom-next").html(`<a href="${pageJSON["next"]}">${link2name[pageJSON["next"]]}<span aria-hidden="true">&rarr;</span></a>`)
-                                     .show();
+                    .show();
             } else {
                 $("#nav-bottom-next").hide();
             }
@@ -162,14 +162,16 @@ module main {
             $("#menu-nav").css("top", offset + "px");
         }
     }
-
-
+    
+    
 }
 
 var app: Sammy.Application = Sammy();
 $(document).ready(new function () {
 
+    app.get('#/search/:query', main.search.handleSearch);
     app.get('#:file', main.Main.loadFile);
+
     //app.get('#:file#:any', main.Main.loadFile);
     //app.get(/#\/:file(#.+)?/, main.Main.loadFileAnchor);
     app.get('', main.Main.default);
