@@ -30,12 +30,16 @@ var main;
         search.searchDone = function (text) {
             console.log(text);
             console.log(search.listOfFiles.sort(search.compareSecondColumn));
+            document.title = "\"" + text + "\" results";
+            $("#title").html("Search");
             if (search.listOfFiles.length == 0) {
-                $('#markdowcontent').html("No relevant articles found.");
+                $('#markdownout').html("No relevant articles found.");
                 return;
             }
+            $('#markdownout').html("<h3>Search results for '" + text + "'</h3>");
             for (var i = 0; i < search.listOfFiles.length; i++) {
-                $('#markdowcontent').html(search.listOfFiles[i][0]);
+                alert(search.listOfMeta["getting-"]);
+                $('#markdownout').html($('#markdownout').html() + search.listOfMeta[search.listOfFiles[i][0]]);
             }
         };
         search.handleSearch = function (context) {
@@ -71,7 +75,7 @@ var main;
                             $.when($.get({
                                 url: "json/" + (fileWithoutExtension + ".json"),
                                 success: function (data) {
-                                    search.listOfMeta.push([file, JSON.parse(data)["title"]]);
+                                    search.listOfMeta[file] = JSON.parse(data)["title"];
                                     search.counter++;
                                 }
                             })).done(function () {
@@ -109,7 +113,7 @@ var main;
         search.finished = [];
         search.init = 0;
         search.counter = 0;
-        search.listOfMeta = [];
+        search.listOfMeta = {};
         return search;
     }());
     main.search = search;

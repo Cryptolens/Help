@@ -12,19 +12,25 @@ module main {
         static init = 0;
         static counter = 0;
 
-        static listOfMeta: any = [];
+        static listOfMeta: any = {};
 
         static searchDone(text: string): any {
             console.log(text);
             console.log(search.listOfFiles.sort(search.compareSecondColumn));
 
+
+            document.title = `"${text}" results`;
+            $("#title").html(`Search`);
+
             if (search.listOfFiles.length == 0) {
-                $('#markdowcontent').html("No relevant articles found.");
+                $('#markdownout').html("No relevant articles found.");
                 return;
             }
-            for (var i = 0; i < search.listOfFiles.length; i++) {
 
-                $('#markdowcontent').html(search.listOfFiles[i][0]);
+            $('#markdownout').html(`<h3>Search results for '${text}'</h3>`);
+            for (var i = 0; i < search.listOfFiles.length; i++) {
+                alert(search.listOfMeta["getting-"]);
+                $('#markdownout').html($('#markdownout').html() + search.listOfMeta[search.listOfFiles[i][0]]);
             }
 
             //$('#markdowcontent').html("#dd");
@@ -77,7 +83,7 @@ module main {
                             $.when($.get({
                                 url: `json/${fileWithoutExtension + ".json"}`,
                                 success: function (data) {
-                                    search.listOfMeta.push([file, JSON.parse(data)["title"]]);
+                                    search.listOfMeta[file] = JSON.parse(data)["title"];
                                     search.counter++;
                                 }
                             })).done(function () {

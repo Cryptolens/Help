@@ -36,7 +36,7 @@
 <div class="row">
 <div class="col-md-4">
     <div class="panel panel-default">
-    <a href="https://support.serialkeymanager.com/ac/payment-forms" style="text-decoration:none;">
+    <a href="#payment-intro" style="text-decoration:none;">
         <div class="panel-body" style="background-color: #cc3300;">
             <h3 class="text-center" style="color:white;">Payment Forms</h3> 
         </div>
