@@ -27,15 +27,14 @@ After these steps, you should see a page similar to the one below:
 <a href="http://support.serialkeymanager.com/wp-content/uploads/2015/06/payforms2.png"><img class="alignnone wp-image-703 size-medium" src="http://support.serialkeymanager.com/wp-content/uploads/2015/06/payforms2-300x183.png" alt="payforms2" width="300" height="183" /></a>
 <a name="paypal"></a>
 <h4>PayPal</h4>
-<ol>
-	<li>Ensure that <strong>Payment Processor</strong> is set to "PayPal".</li>
-	<li>In PayPal, you can test your the system by being in <strong>Sandbox</strong> mode. If you want to be in <strong>Sandbox</strong> mode, please check the box.</li>
-	<li>In the <strong>public key</strong> box, you should enter your "primary business email". This is the email address where the money will be sent.</li>
-	<li>In the <strong>private key</strong> box, you should enter your "identity token". You can find it on your PayPal page by clicking on Profile (top menu, right corner) &gt; Account Settings &gt; Website Preferences. On that page, select <em>Auto Return</em> to "On", enter "https://serialkeymanager.com/Form/IPN/" and finally set <em>Payment Data Transfer</em> to "On". Then, press on Save. An identity token will be generated for you. <strong><span style="color: #ff0000;">Note</span>:</strong> 
-    ```
-    If you want to receive payments in a currency that is not your default currency, please ensure that you allow other currencies. You can do so by going to Profile (top menu, right corner) &gt; Account Settings &gt; Block Payments and select "Yes, accept and convert them to U.S. Dollars". <strong>Tip</strong>: If you are using the classical interface, you would need to go to Profile (top menu, right corner) &gt; My Selling Tools (in both scenarios).
-    ```
-    </li>
+
+1. Ensure that <strong>Payment Processor</strong> is set to "PayPal".
+2. In PayPal, you can test your the system by being in <strong>Sandbox</strong> mode. If you want to be in <strong>Sandbox</strong> mode, please check the box.
+3. In the <strong>public key</strong> box, you should enter your "primary business email". This is the email address where the money will be sent.
+4. In the <strong>private key</strong> box, you should enter your "identity token". You can find it on your PayPal page by clicking on Profile (top menu, right corner) &gt; Account Settings &gt; Website Preferences. On that page, select <em>Auto Return</em> to "On", enter "https://serialkeymanager.com/Form/IPN/" and finally set <em>Payment Data Transfer</em> to "On". Then, press on Save. An identity token will be generated for you.
+> If you want to receive payments in a currency that is not your default currency, please ensure that you allow other currencies. You can do so by going to Profile (top menu, right corner) &gt; Account Settings &gt; Block Payments and select "Yes, accept and convert them to U.S. Dollars". <strong>Tip</strong>: If you are using the classical interface, you would need to go to Profile (top menu, right corner) &gt; My Selling Tools (in both scenarios).
+    
+    
 </ol>
 <a name="stripe"></a>
 <h4>Stripe</h4>

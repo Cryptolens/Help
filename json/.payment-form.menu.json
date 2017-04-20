@@ -1,5 +1,5 @@
 {
         "Introduction": "#payment-intro",
         "Example": "#payment-example",
-        "Webhooks": "#payment-request"
+        "Request Items": "#payment-request"
 }
