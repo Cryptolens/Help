@@ -1,9 +1,11 @@
 {
     "title": "Getting Started",
+    "name": "Public Keys",
+    "summary": "Explains how to retrieve public keys in SKM.",
     "color": "#009933",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".gettingstarted.menu",
+    "menu": ".gettingstarted.menu",
     "next": "#create-license",
     "prev": "#access-token"
 }

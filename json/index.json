@@ -1,5 +1,7 @@
 {
     "title": "Welcome!",
+    "name": "Homepage",
+    "summary": "Sumary of all tutorials.",
     "color": "#edf0f2",
-    "text":"black"
+    "text": "black"
 }

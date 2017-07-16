@@ -1,9 +1,11 @@
 {
     "title": "Getting Started",
+    "name": "Insert the code snippet",
+    "summary": "The code that should be inserted into your application.",
     "color": "#009933",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".gettingstarted.menu",
+    "menu": ".gettingstarted.menu",
     "next": "#access-token",
     "prev": "#new-product"
 }

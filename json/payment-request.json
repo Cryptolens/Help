@@ -1,9 +1,11 @@
 {
     "title": "Payment Forms",
     "color": "#cc3300",
+    "name": "Request Items and Custom Fields",
+    "summary": "Detailed description of request items and custom fields.",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".payment-form.menu",
+    "menu": ".payment-form.menu",
     "next": null,
     "prev": "#payment-example"
 }

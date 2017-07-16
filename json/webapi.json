@@ -1,9 +1,11 @@
 {
     "title": "Basics of SKM",
     "subtitle": "",
+    "name": "Web API",
+    "summary": "Basics of Web API",
     "color": "#0066cc",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".menu",
+    "menu": ".menu",
     "prev": "#prodkeys"
 }

@@ -1,9 +1,11 @@
 {
     "title": "Basics of SKM",
+    "name": "Basics of SKM",
+    "summary": "Overview of SKM and explanation of the difference between SKM Platform and SKM Client API.",
     "color": "#0066cc",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".menu",
+    "menu": ".menu",
     "next": "#prodkeys",
     "prev": null
 }

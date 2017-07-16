@@ -1,9 +1,11 @@
 {
     "title": "Payment Forms",
+    "name": "Payment Forms example step by step",
+    "summary": "Tutorial that includes step by step instructions on how to create a payment form that uses both Stripe and PayPal",
     "color": "#cc3300",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".payment-form.menu",
+    "menu": ".payment-form.menu",
     "next": "#payment-request",
     "prev": "#payment-intro"
 }

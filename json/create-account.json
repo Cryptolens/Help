@@ -1,9 +1,11 @@
 {
     "title": "Getting Started",
+    "name": "Create an account",
+    "summary": "Step by step instructions on creating an account.",
     "color": "#009933",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".gettingstarted.menu",
+    "menu": ".gettingstarted.menu",
     "next": "#skm-client-api",
     "prev": "#getting-started"
 }

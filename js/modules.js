@@ -36,10 +36,9 @@ var main;
                 $('#markdownout').html("No relevant articles found.");
                 return;
             }
-            $('#markdownout').html("<h3>Search results for '" + text + "'</h3>");
+            $('#markdownout').html("<h3>Search results for '" + text + "'</h3> <ul>");
             for (var i = 0; i < search.listOfFiles.length; i++) {
-                alert(search.listOfMeta["getting-"]);
-                $('#markdownout').html($('#markdownout').html() + search.listOfMeta[search.listOfFiles[i][0]]);
+                $('#markdownout').html($('#markdownout').html() + ("<li><a href=\"#" + search.listOfFiles[i][0].replace(".md", "") + "\">" + search.listOfMeta[search.listOfFiles[i][0]]["name"] + "</a></li>"));
             }
         };
         search.handleSearch = function (context) {
@@ -53,14 +52,10 @@ var main;
                 url: "md/",
                 success: function (data) {
                     $(data).find("a:contains('." + fileExtension + "')").each(function () {
-                        search.init++;
                         search.findInFile(text, $(this).text());
                     });
                 }, error: function () { }
             })).done(function () {
-                if (search.counter == search.init) {
-                    search.searchDone(text);
-                }
             });
         };
         search.findInFile = function (text, file) {
@@ -70,12 +65,13 @@ var main;
                 success: function (data) {
                     var counter = (data.split(text).length - 1);
                     if (counter > 0) {
+                        search.init++;
                         search.listOfFiles.push([file, counter]);
                         if (!search.containsItem(search.listOfMeta, file)) {
                             $.when($.get({
                                 url: "json/" + (fileWithoutExtension + ".json"),
                                 success: function (data) {
-                                    search.listOfMeta[file] = JSON.parse(data)["title"];
+                                    search.listOfMeta[file] = { "name": JSON.parse(data)["name"], "summary": JSON.parse(data)["summary"] };
                                     search.counter++;
                                 }
                             })).done(function () {
@@ -85,12 +81,8 @@ var main;
                             });
                         }
                     }
-                    search.counter++;
                 }
             })).done(function () {
-                if (search.counter == search.init) {
-                    search.searchDone(text);
-                }
             });
         };
         search.compareSecondColumn = function (a, b) {

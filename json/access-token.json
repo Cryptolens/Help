@@ -1,9 +1,11 @@
 {
     "title": "Getting Started",
+    "name": "Basics of Access Tokens",
+    "summary": "Introduction to access tokens and guide of creating them.",
     "color": "#009933",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".gettingstarted.menu",
+    "menu": ".gettingstarted.menu",
     "next": "#pubkey",
     "prev": "#insert-code"
 }

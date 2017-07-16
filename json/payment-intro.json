@@ -1,9 +1,11 @@
 {
     "title": "Payment Forms",
+    "name": "Introduction to Payment Forms",
+    "summary": "Introduction to the key concepts of Payment Forms",
     "color": "#cc3300",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".payment-form.menu",
+    "menu": ".payment-form.menu",
     "next": "#payment-example",
     "prev": null
 }

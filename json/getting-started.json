@@ -1,5 +1,7 @@
 {
     "title": "Getting Started",
+    "name": "Create a license key",
+    "summary": "Introduction to the getting started tutorial.", 
     "color": "#009933",
     "text": "white",
     "showmenu": "true",

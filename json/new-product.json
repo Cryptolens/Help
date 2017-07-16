@@ -1,9 +1,11 @@
 {
     "title": "Getting Started",
     "color": "#009933",
+    "name": "Creating a new product",
+    "summary": "Create a new product step by step",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".gettingstarted.menu",
+    "menu": ".gettingstarted.menu",
     "next": "#insert-code",
     "prev": "#skm-client-api"
 }

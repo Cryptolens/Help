@@ -1,9 +1,11 @@
 {
     "title": "Licensing Models",
+    "name": "Overview of licensing models",
+    "summary": "An overview of some of the supported licensing models in SKM.",
     "color": "#ff9900",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".licensetypes.menu",
+    "menu": ".licensetypes.menu",
     "next": "#perpetual",
     "prev": null
 }

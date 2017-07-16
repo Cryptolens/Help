@@ -1,5 +1,7 @@
 {
     "title": "Getting Started",
+    "name": "Create a license key",
+    "summary": "Creating a license key step by step.", 
     "color": "#009933",
     "text": "white",
     "showmenu": "true",

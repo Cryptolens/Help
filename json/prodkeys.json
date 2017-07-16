@@ -1,9 +1,11 @@
 {
     "title": "Basics of SKM",
+    "name": "Introduction to Products and Keys",
+    "summary": "A basic description of products and keys.",
     "color": "#0066cc",
     "text": "white",
     "showmenu": "true",
-    "menu" : ".menu",
+    "menu": ".menu",
     "next": "#webapi",
     "prev": "#basics"
 }

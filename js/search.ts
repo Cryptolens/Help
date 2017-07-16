@@ -27,10 +27,12 @@ module main {
                 return;
             }
 
-            $('#markdownout').html(`<h3>Search results for '${text}'</h3>`);
+            $('#markdownout').html(`<h3>Search results for '${text}'</h3> <ul>`);
+
+            
             for (var i = 0; i < search.listOfFiles.length; i++) {
-                alert(search.listOfMeta["getting-"]);
-                $('#markdownout').html($('#markdownout').html() + search.listOfMeta[search.listOfFiles[i][0]]);
+                
+                $('#markdownout').html($('#markdownout').html() +`<li><a href="#${search.listOfFiles[i][0].replace(".md","")}">${search.listOfMeta[search.listOfFiles[i][0]]["name"]}</a></li>`);
             }
 
             //$('#markdowcontent').html("#dd");
@@ -54,17 +56,12 @@ module main {
                 url: "md/",
                 success: function (data) {
 
-                    $(data).find(`a:contains('.${fileExtension}')`).each(function () {
-                        search.init++;
+                    $(data).find(`a:contains('.${fileExtension}')`).each(function () {                      
                         search.findInFile(text, $(this).text());
-
-                        //search.listOfFiles.push(this.text())
                     });
                 }, error: function () { }
             })).done(function () {
-                if (search.counter == search.init) {
-                    search.searchDone(text);
-                }
+                // remove, it does not do anything.
             });
         }
 
@@ -74,16 +71,17 @@ module main {
             $.when($.get({
                 url: `md/${file}`,
                 success: function (data) {
-                    var counter: number = (data.split(text).length - 1) //4//$(data).find(`a:contains('${text}')`) //$(data).contents.toString().match(`${text}`).length; // 
-                    //var counter = 0;
+                    var counter: number = (data.split(text).length - 1); //4//$(data).find(`a:contains('${text}')`) //$(data).contents.toString().match(`${text}`).length; // 
+
                     if (counter > 0) {
+                        search.init++;
                         search.listOfFiles.push([file, counter]);
 
                         if (!search.containsItem(search.listOfMeta, file)) {
                             $.when($.get({
                                 url: `json/${fileWithoutExtension + ".json"}`,
                                 success: function (data) {
-                                    search.listOfMeta[file] = JSON.parse(data)["title"];
+                                    search.listOfMeta[file] = {"name": JSON.parse(data)["name"],"summary": JSON.parse(data)["summary"] };
                                     search.counter++;
                                 }
                             })).done(function () {
@@ -93,13 +91,10 @@ module main {
                             });
                         }
                     }
-                    search.counter++;
                 }
             }),
             ).done(function () {
-                if (search.counter == search.init) {
-                    search.searchDone(text);
-                }
+                // remove, it does not do anything.
             });
         }
 
@@ -126,3 +121,4 @@ module main {
 
     }
 }
+
