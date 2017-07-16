@@ -28,10 +28,6 @@ var main;
         function search() {
         }
         search.searchDone = function (text) {
-            console.log(text);
-            console.log(search.listOfFiles.sort(search.compareSecondColumn));
-            document.title = "\"" + text + "\" results";
-            $("#title").html("Search");
             if (search.listOfFiles.length == 0) {
                 $('#markdowcontent').html("No relevant articles found.");
                 return;
@@ -46,6 +42,15 @@ var main;
             search.listOfFiles = [];
             search.crawl(query, "md");
             $('#markdowcontent').html("Loading...");
+            document.title = "\"" + query + "\" results";
+            $("#title").html("Search");
+            $("#jumbo").css("background-color", "gray");
+            $("#jumbo").css("color", "white");
+            $("#markdownout").removeClass().addClass("col-md-12");
+            $("#menu").addClass("hidden");
+            $("#menu-nav").addClass("hidden");
+            $("#nav-bottom-prev").hide();
+            $("#nav-bottom-next").hide();
         };
         search.crawl = function (text, fileExtension) {
             $.when($.ajax({

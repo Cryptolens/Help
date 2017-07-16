@@ -15,12 +15,8 @@ module main {
         static listOfMeta: any = {};
 
         static searchDone(text: string): any {
-            console.log(text);
-            console.log(search.listOfFiles.sort(search.compareSecondColumn));
 
 
-            document.title = `"${text}" results`;
-            $("#title").html(`Search`);
 
             if (search.listOfFiles.length == 0) {
                 $('#markdowcontent').html("No relevant articles found.");
@@ -30,8 +26,8 @@ module main {
             $('#markdowcontent').html(`<h3>Search results for '${text}'</h3> <ul>`);
 
             for (var i = 0; i < search.listOfFiles.length; i++) {
-                
-                $('#markdowcontent').html($('#markdowcontent').html() +`<li><a href="#${search.listOfFiles[i][0].replace(".md","")}">${search.listOfMeta[search.listOfFiles[i][0]]["name"]}</a></li>`);
+
+                $('#markdowcontent').html($('#markdowcontent').html() + `<li><a href="#${search.listOfFiles[i][0].replace(".md", "")}">${search.listOfMeta[search.listOfFiles[i][0]]["name"]}</a></li>`);
             }
 
             //$('#markdowcontent').html("#dd");
@@ -42,6 +38,16 @@ module main {
             search.listOfFiles = [];
             search.crawl(query, "md");
             $('#markdowcontent').html("Loading...");
+
+            document.title = `"${query}" results`;
+            $("#title").html(`Search`);
+            $("#jumbo").css("background-color", "gray");
+            $("#jumbo").css("color", "white");
+            $("#markdownout").removeClass().addClass("col-md-12");
+            $("#menu").addClass("hidden");
+            $("#menu-nav").addClass("hidden");
+            $("#nav-bottom-prev").hide();
+            $("#nav-bottom-next").hide();
         }
 
         /**
@@ -55,7 +61,7 @@ module main {
                 url: "md/",
                 success: function (data) {
 
-                    $(data).find(`a:contains('.${fileExtension}')`).each(function () {                      
+                    $(data).find(`a:contains('.${fileExtension}')`).each(function () {
                         search.findInFile(text, $(this).text());
                     });
                 }, error: function () { }
@@ -80,7 +86,7 @@ module main {
                             $.when($.get({
                                 url: `json/${fileWithoutExtension + ".json"}`,
                                 success: function (data) {
-                                    search.listOfMeta[file] = {"name": JSON.parse(data)["name"],"summary": JSON.parse(data)["summary"] };
+                                    search.listOfMeta[file] = { "name": JSON.parse(data)["name"], "summary": JSON.parse(data)["summary"] };
                                     search.counter++;
                                 }
                             })).done(function () {
