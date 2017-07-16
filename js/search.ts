@@ -73,6 +73,7 @@ module main {
         static findInFile(text: string, file: string) {
 
             var fileWithoutExtension = file.split(".")[0];
+
             $.when($.get({
                 url: `md/${file}`,
                 success: function (data) {
