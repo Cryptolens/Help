@@ -36,6 +36,8 @@ module main {
         }
 
         private static loadPageMD(filename: string) {
+
+            console.log("aaaa");
             $.ajax({
                 url: "md/" + filename + ".md",
                 success: function (data) {

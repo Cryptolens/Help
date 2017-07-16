@@ -33,12 +33,12 @@ var main;
             document.title = "\"" + text + "\" results";
             $("#title").html("Search");
             if (search.listOfFiles.length == 0) {
-                $('#markdownout').html("No relevant articles found.");
+                $('#markdowcontent').html("No relevant articles found.");
                 return;
             }
-            $('#markdownout').html("<h3>Search results for '" + text + "'</h3> <ul>");
+            $('#markdowcontent').html("<h3>Search results for '" + text + "'</h3> <ul>");
             for (var i = 0; i < search.listOfFiles.length; i++) {
-                $('#markdownout').html($('#markdownout').html() + ("<li><a href=\"#" + search.listOfFiles[i][0].replace(".md", "") + "\">" + search.listOfMeta[search.listOfFiles[i][0]]["name"] + "</a></li>"));
+                $('#markdowcontent').html($('#markdowcontent').html() + ("<li><a href=\"#" + search.listOfFiles[i][0].replace(".md", "") + "\">" + search.listOfMeta[search.listOfFiles[i][0]]["name"] + "</a></li>"));
             }
         };
         search.handleSearch = function (context) {
@@ -129,6 +129,7 @@ var main;
             this.loadPageJSON(filename);
         };
         Main.loadPageMD = function (filename) {
+            console.log("aaaa");
             $.ajax({
                 url: "md/" + filename + ".md",
                 success: function (data) {
