@@ -77,7 +77,15 @@ module main {
             $.when($.get({
                 url: `md/${file}`,
                 success: function (data) {
-                    var counter: number = (data.split(text).length - 1); //4//$(data).find(`a:contains('${text}')`) //$(data).contents.toString().match(`${text}`).length; // 
+                    var counter: number = 0; //4//$(data).find(`a:contains('${text}')`) //$(data).contents.toString().match(`${text}`).length; // 
+
+                    // look through all the keywords in the search expression.
+
+                    var keywords = text.split(" ");
+                    for(var i = 0; i < keywords.length; i++) {
+                        counter += (data.split(keywords[i]).length - 1);
+                        console.log(keywords[i]);
+                    }
 
                     if (counter > 0) {
                         search.init++;
