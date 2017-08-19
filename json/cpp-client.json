@@ -1,0 +1,11 @@
+{
+    "title": "C++ Integration",
+    "name": "Introduction to C++",
+    "summary": "Overview of SKM and explanation of the difference between SKM Platform and SKM Client API.",
+    "color": "#003399",
+    "text": "white",
+    "showmenu": "true",
+    "menu": ".cpp.menu",
+    "next": "#prodkeys",
+    "prev": null
+}
