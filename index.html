@@ -31,21 +31,28 @@
   <a class="col-md-6" href="#" style="text-decoration:none;"><p style="font-size:x-large;"><img src="images/favicon.png" width="50px" />SKM Tutorials</p></a>
   
   <!--<a class="col-md-2 visible-lg visible-md" href="https://support.serialkeymanager.com/forums" style="text-decoration:none;"><p style="font-size:x-large;"><div class="display:block; height:50px;" ></div><p style="font-size:large;">Forum</p></p></a>-->
+
+  <select class="col-md-6 visible-sm visible-xs form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+    <option value="#">Home</option>
+    <option value="https://blog.skmapp.com">Blog</option>
+    <option value="https://serialkeymanager.com/">skmapp.com</option>
+
+  </select>
+
+  <div class="visible-xs">
+    <div style="display:block;height:10px;"></div>
+  </div>
+     
   <a class="col-md-2 visible-lg visible-md" href="https://blog.skmapp.com/" style="text-decoration:none;"><p style="font-size:large;"><div class="display:block; height:50px;" ></div><p style="font-size:large;">Blog</p></p></a>
   <a class="col-md-2 visible-lg visible-md" href="https://serialkeymanager.com/" style="text-decoration:none;"><p style="font-size:large;"><div class="display:block;  height:50px;" ></div><p style="font-size:large;">skmapp.com</p></p></a>
-  <form class="col-md-2 visible-lg visible-md" method="get" action="#/search/" id="searchform">
+  <form class="col-md-2" method="get" action="#/search/" id="searchform">
     <div class="form-group has-feedback">
-      <input type="text" class="form-control" id="searchquery"/>
+      <input type="text" class="form-control" id="searchquery" placeholder="Search for ..."/>
       <span class="glyphicon glyphicon-search form-control-feedback"></span>
   </div></form>
   
   
-   <select class="col-md-6 visible-sm visible-xs form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-     <option value="#">Home</option>
-     <option value="https://support.serialkeymanager.com/forums">Forum</option>
-     <option value="https://blog.skmapp.com">Blog</option>
-     <option value="https://serialkeymanager.com/">skmapp.com</option>
-   </select>
+  
 
   <div class="clearfix"></div>
       </div>
