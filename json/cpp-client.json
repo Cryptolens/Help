@@ -6,6 +6,6 @@
     "text": "white",
     "showmenu": "true",
     "menu": ".cpp.menu",
-    "next": "#prodkeys",
+    "next": null,
     "prev": null
 }
