@@ -32,9 +32,7 @@ var main;
                 $('#markdowcontent').html("No relevant articles found.");
                 return;
             }
-            $('#markdowcontent').html("<h3>Search results for '" + text + "'</h3> <ul>");
             for (var i = 0; i < search.listOfFiles.length; i++) {
-                $('#markdowcontent').html($('#markdowcontent').html() + ("<li><a href=\"#" + search.listOfFiles[i][0].replace(".md", "") + "\">" + search.listOfMeta[search.listOfFiles[i][0]]["name"] + "</a></li>"));
             }
         };
         search.handleSearch = function (context) {
@@ -68,7 +66,12 @@ var main;
             $.when($.get({
                 url: "md/" + file,
                 success: function (data) {
-                    var counter = (data.split(text).length - 1);
+                    var counter = 0;
+                    var keywords = text.split(" ");
+                    for (var i = 0; i < keywords.length; i++) {
+                        counter += (data.split(keywords[i]).length - 1);
+                        console.log(keywords[i]);
+                    }
                     if (counter > 0) {
                         search.init++;
                         search.listOfFiles.push([file, counter]);
@@ -106,13 +109,13 @@ var main;
             }
             return false;
         };
-        search.listOfFiles = [];
-        search.finished = [];
-        search.init = 0;
-        search.counter = 0;
-        search.listOfMeta = {};
         return search;
     }());
+    search.listOfFiles = [];
+    search.finished = [];
+    search.init = 0;
+    search.counter = 0;
+    search.listOfMeta = {};
     main.search = search;
 })(main || (main = {}));
 var main;
