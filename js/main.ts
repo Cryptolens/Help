@@ -37,7 +37,6 @@ module main {
 
         private static loadPageMD(filename: string) {
 
-            console.log("aaaa");
             $.ajax({
                 url: "md/" + filename + ".md",
                 success: function (data) {
@@ -202,6 +201,19 @@ $(document).ready(new function () {
 
     $(document).scroll(main.View.fixMenu);
     $(window).resize(main.View.fixMenu);
+
+    $(function() { //shorthand document.ready function
+        $('#searchform').on('submit', function(e) { //use on if jQuery 1.7+
+            e.preventDefault();  //prevent form from submitting
+            var data = $("#searchquery").val();
+
+            window.location.href=`/#/search/${encodeURIComponent(data)}`;
+
+            $("#searchquery").val("");
+            return false;
+          
+        });
+    });
 
 });
 
