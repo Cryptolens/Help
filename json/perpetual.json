@@ -1,6 +1,7 @@
 {
     "title": "Licensing Models",
     "color": "#ff9900",
+    "name": "Perpetual licensing model",
     "text": "white",
     "showmenu": "true",
     "menu" : ".licensetypes.menu",

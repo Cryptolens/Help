@@ -1,5 +1,6 @@
 /**
- * Copyright (C) 2016 Artem Los. All rights reserved.
+ * Copyright (C) 2017 Cryptolens AB. All rights reserved.
+ * @author Artem Los
  */
 module main {
     // TODO: do an index once and store later in local var?
@@ -16,7 +17,7 @@ module main {
 
         static searchDone(text: string): any {
 
-
+            search.listOfFiles.sort(search.compareSecondColumn);
 
             if (search.listOfFiles.length == 0) {
                 $('#markdowcontent').html("No relevant articles found.");
@@ -26,6 +27,8 @@ module main {
             $('#markdowcontent').html(`<h3>Search results for '${text}'</h3><br>`);
 
             for (var i = 0; i < search.listOfFiles.length; i++) {
+
+                if(search.listOfFiles[i][0] == "404") {continue;}
 
                 $('#markdowcontent').html($('#markdowcontent').html() + `<h4><a href="#${search.listOfFiles[i][0].replace(".md", "")}">${search.listOfMeta[search.listOfFiles[i][0]]["name"]}</a></h4>
                 <p>${search.listOfMeta[search.listOfFiles[i][0]]["summary"]}</p><hr>`);
@@ -82,21 +85,43 @@ module main {
 
                     // look through all the keywords in the search expression.
 
-                    var keywords = text.split(" ");
+                    var keywords = text.replace("  ", " ").toLowerCase().split(" ");
                     for(var i = 0; i < keywords.length; i++) {
-                        counter += (data.split(keywords[i]).length - 1);
-                        console.log(keywords[i]);
+                        if(keywords[i].length == 1) {continue;}
+                        counter += (data.toLowerCase().split(keywords[i]).length - 1);
                     }
 
-                    if (counter > 0) {
+                    //if (counter > 0) {
                         search.init++;
-                        search.listOfFiles.push([file, counter]);
+                        //search.listOfFiles.push([file, counter]);
 
                         if (!search.containsItem(search.listOfMeta, file)) {
                             $.when($.get({
                                 url: `json/${fileWithoutExtension + ".json"}`,
                                 success: function (data) {
-                                    search.listOfMeta[file] = { "name": JSON.parse(data)["name"], "summary": JSON.parse(data)["summary"] };
+                                    
+                                    if(JSON.parse(data)["name"]!=null) {
+                                        for(var i = 0; i < keywords.length; i++) {
+                                            if(keywords[i].length == 1) {continue;}
+                        
+                                            counter += 20*(JSON.parse(data)["name"].toLowerCase().split(keywords[i]).length - 1);
+                                        }
+                                    }
+
+                                    if(JSON.parse(data)["summary"]!=null) {
+                                        for(var i = 0; i < keywords.length; i++) {
+                                            if(keywords[i].length == 1) {continue;}
+                        
+                                            counter += 10*(JSON.parse(data)["summary"].toLowerCase().split(keywords[i]).length - 1);
+                                        }
+                                    }
+
+                                    if(counter > 0) {
+                                        search.listOfFiles.push([file, counter]);
+                                    }
+
+                                    search.listOfMeta[file] = { "name": JSON.parse(data)["name"], "summary": JSON.parse(data)["summary"], "count":counter };
+                                    
                                     search.counter++;
                                 }
                             })).done(function () {
@@ -105,7 +130,7 @@ module main {
                                 }
                             });
                         }
-                    }
+                    //}
                 }
             }),
             ).done(function () {
