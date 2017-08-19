@@ -1,0 +1,11 @@
+{
+    "title": "Web Interface",
+    "color": "#003333",
+    "name": "Difference between SKGL and SKM15",
+    "summary": "This article compares SKGL and SKM15 key generation algorithms and suggests possible use cases for each of them.",
+    "text": "white",
+    "showmenu": "true",
+    "menu" : ".platform.menu",
+    "next": null,
+    "prev": null
+}

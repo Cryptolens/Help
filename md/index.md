@@ -82,17 +82,17 @@
     A comprehensive introduction to our [C++ Client](https://github.com/SerialKeyManager/SKM-Client-API-CPP/) that
     can be used to access SKM's Web API.
 </div>
-<!--<div class="col-md-4">
+<div class="col-md-4">
     <div class="panel panel-default">
-       <a href="https://serialkeymanager.com/docs/api/" style="text-decoration:none;">
-        <div class="panel-body" style="background-color:#666666;">
-            <h3 class="text-center" style="color:white;">Web API</h3> 
+       <a href="#platform" style="text-decoration:none;">
+        <div class="panel-body" style="background-color:#003333;">
+            <h3 class="text-center" style="color:white;">Web Interface</h3> 
         </div>
     </a>
     </div>
-    A reference of all the methods available in the <a href="#webapi">Web API</a>.
+    Collection of tutorials about the functionality in our web interface.
 </div>
-<div class="col-md-4">
+<!--<div class="col-md-4">
       <div class="panel panel-default">
        <a href="http://api.serialkeymanager.com/html/G_SKM.htm" style="text-decoration:none;">
         <div class="panel-body" style="background-color: #663399;">

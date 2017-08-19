@@ -1,0 +1,11 @@
+{
+    "title": "Web Interface",
+    "color": "#003333",
+    "name": "Introduction to the Web Interface of SKM",
+    "summary": "This article contains an overview of functionality that is offered through our web interface.",
+    "text": "white",
+    "showmenu": "true",
+    "menu" : ".platform.menu",
+    "next": null,
+    "prev": null
+}

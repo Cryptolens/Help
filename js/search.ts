@@ -87,7 +87,7 @@ module main {
 
                     // look through all the keywords in the search expression.
 
-                    var keywords = text.replace("  ", " ").toLowerCase().split(" ");
+                    var keywords = text.trim().replace("  ", " ").toLowerCase().split(" ");
                     for(var i = 0; i < keywords.length; i++) {
                         if(keywords[i].length == 1) {continue;}
                         counter += (data.toLowerCase().split(keywords[i]).length - 1);
