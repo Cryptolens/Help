@@ -63,6 +63,7 @@ module main {
 
             $.when($.ajax({
                 url: "md/",
+                dataType:"html",
                 success: function (data) {
 
                     $(data).find(`a:contains('.${fileExtension}')`).each(function () {
@@ -80,6 +81,7 @@ module main {
 
             $.when($.get({
                 url: `md/${file}`,
+                dataType: "text",
                 success: function (data) {
                     var counter: number = 0; //4//$(data).find(`a:contains('${text}')`) //$(data).contents.toString().match(`${text}`).length; // 
 
@@ -98,21 +100,22 @@ module main {
                         if (!search.containsItem(search.listOfMeta, file)) {
                             $.when($.get({
                                 url: `json/${fileWithoutExtension + ".json"}`,
+                                dataType:"json",
                                 success: function (data) {
                                     
-                                    if(JSON.parse(data)["name"]!=null) {
+                                    if(data["name"]!=null) {
                                         for(var i = 0; i < keywords.length; i++) {
                                             if(keywords[i].length == 1) {continue;}
                         
-                                            counter += 20*(JSON.parse(data)["name"].toLowerCase().split(keywords[i]).length - 1);
+                                            counter += 20*(data["name"].toLowerCase().split(keywords[i]).length - 1);
                                         }
                                     }
 
-                                    if(JSON.parse(data)["summary"]!=null) {
+                                    if(data["summary"]!=null) {
                                         for(var i = 0; i < keywords.length; i++) {
                                             if(keywords[i].length == 1) {continue;}
                         
-                                            counter += 10*(JSON.parse(data)["summary"].toLowerCase().split(keywords[i]).length - 1);
+                                            counter += 10*(data["summary"].toLowerCase().split(keywords[i]).length - 1);
                                         }
                                     }
 
@@ -120,7 +123,7 @@ module main {
                                         search.listOfFiles.push([file, counter]);
                                     }
 
-                                    search.listOfMeta[file] = { "name": JSON.parse(data)["name"], "summary": JSON.parse(data)["summary"], "count":counter };
+                                    search.listOfMeta[file] = { "name": data["name"], "summary": data["summary"], "count":counter };
                                     
                                     search.counter++;
                                 }
