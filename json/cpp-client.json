@@ -1,7 +1,7 @@
 {
     "title": "C++ Integration",
     "name": "Introduction to C++",
-    "summary": "Overview of SKM and explanation of the difference between SKM Platform and SKM Client API.",
+    "summary": "A comprehensive article that describes how the C++ client can be used to access SKM's Web API.",
     "color": "#003399",
     "text": "white",
     "showmenu": "true",

@@ -68,3 +68,40 @@
     contain many examples for C#.
 </div>
 </div>
+
+<hr class="visible-xs visible-sm">
+<div class="row">
+<div class="col-md-4">
+    <div class="panel panel-default">
+    <a href="#cpp-client" style="text-decoration:none;">
+        <div class="panel-body" style="background-color: #003399;">
+            <h3 class="text-center" style="color:white;">C++ Integration</h3> 
+        </div>
+    </a>
+    </div>
+    A comprehensive introduction to our [C++ Client](https://github.com/SerialKeyManager/SKM-Client-API-CPP/) that
+    can be used to access SKM's Web API.
+</div>
+<!--<div class="col-md-4">
+    <div class="panel panel-default">
+       <a href="https://serialkeymanager.com/docs/api/" style="text-decoration:none;">
+        <div class="panel-body" style="background-color:#666666;">
+            <h3 class="text-center" style="color:white;">Web API</h3> 
+        </div>
+    </a>
+    </div>
+    A reference of all the methods available in the <a href="#webapi">Web API</a>.
+</div>
+<div class="col-md-4">
+      <div class="panel panel-default">
+       <a href="http://api.serialkeymanager.com/html/G_SKM.htm" style="text-decoration:none;">
+        <div class="panel-body" style="background-color: #663399;">
+            <h3 class="text-center" style="color:white;">.NET API Reference</h3> 
+        </div>
+    </a>
+    </div>
+    The .NET API Reference of <a href="https://support.serialkeymanager.com/kb/skgl-extension-api">SKM Client API</a>.
+    <a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md">Release notes</a>
+    contain many examples for C#.
+</div>-->
+</div>

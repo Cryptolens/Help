@@ -28,8 +28,8 @@ module main {
 
             for (var i = 0; i < search.listOfFiles.length; i++) {
 
-                if(search.listOfFiles[i][0] == "404") {continue;}
-
+                if(search.listOfFiles[i][0] == "404.md") {continue;}
+                if(search.listOfFiles[i][0] == "index.md") {continue;}
                 $('#markdowcontent').html($('#markdowcontent').html() + `<h4><a href="#${search.listOfFiles[i][0].replace(".md", "")}">${search.listOfMeta[search.listOfFiles[i][0]]["name"]}</a></h4>
                 <p>${search.listOfMeta[search.listOfFiles[i][0]]["summary"]}</p><hr>`);
             }
