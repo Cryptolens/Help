@@ -6,6 +6,6 @@
     "text": "white",
     "showmenu": "true",
     "menu": ".payment-form.menu",
-    "next": null,
+    "next": "#paymentform-sessions",
     "prev": "#payment-example"
 }

@@ -28,11 +28,20 @@ var main;
         function search() {
         }
         search.searchDone = function (text) {
+            search.listOfFiles.sort(search.compareSecondColumn);
             if (search.listOfFiles.length == 0) {
                 $('#markdowcontent').html("No relevant articles found.");
                 return;
             }
+            $('#markdowcontent').html("<h3>Search results for '" + text + "'</h3><br>");
             for (var i = 0; i < search.listOfFiles.length; i++) {
+                if (search.listOfFiles[i][0] == "404.md") {
+                    continue;
+                }
+                if (search.listOfFiles[i][0] == "index.md") {
+                    continue;
+                }
+                $('#markdowcontent').html($('#markdowcontent').html() + ("<h4><a href=\"#" + search.listOfFiles[i][0].replace(".md", "") + "\">" + search.listOfMeta[search.listOfFiles[i][0]]["name"] + "</a></h4>\n                <p>" + search.listOfMeta[search.listOfFiles[i][0]]["summary"] + "</p><hr>"));
             }
         };
         search.handleSearch = function (context) {
@@ -53,6 +62,7 @@ var main;
         search.crawl = function (text, fileExtension) {
             $.when($.ajax({
                 url: "md/",
+                dataType: "html",
                 success: function (data) {
                     $(data).find("a:contains('." + fileExtension + "')").each(function () {
                         search.findInFile(text, $(this).text());
@@ -65,29 +75,49 @@ var main;
             var fileWithoutExtension = file.split(".")[0];
             $.when($.get({
                 url: "md/" + file,
+                dataType: "text",
                 success: function (data) {
                     var counter = 0;
-                    var keywords = text.split(" ");
+                    var keywords = text.trim().replace("  ", " ").toLowerCase().split(" ");
                     for (var i = 0; i < keywords.length; i++) {
-                        counter += (data.split(keywords[i]).length - 1);
-                        console.log(keywords[i]);
-                    }
-                    if (counter > 0) {
-                        search.init++;
-                        search.listOfFiles.push([file, counter]);
-                        if (!search.containsItem(search.listOfMeta, file)) {
-                            $.when($.get({
-                                url: "json/" + (fileWithoutExtension + ".json"),
-                                success: function (data) {
-                                    search.listOfMeta[file] = { "name": JSON.parse(data)["name"], "summary": JSON.parse(data)["summary"] };
-                                    search.counter++;
-                                }
-                            })).done(function () {
-                                if (search.counter == search.init) {
-                                    search.searchDone(text);
-                                }
-                            });
+                        if (keywords[i].length == 1) {
+                            continue;
                         }
+                        counter += (data.toLowerCase().split(keywords[i]).length - 1);
+                    }
+                    search.init++;
+                    if (!search.containsItem(search.listOfMeta, file)) {
+                        $.when($.get({
+                            url: "json/" + (fileWithoutExtension + ".json"),
+                            dataType: "json",
+                            success: function (data) {
+                                if (data["name"] != null) {
+                                    for (var i = 0; i < keywords.length; i++) {
+                                        if (keywords[i].length == 1) {
+                                            continue;
+                                        }
+                                        counter += 20 * (data["name"].toLowerCase().split(keywords[i]).length - 1);
+                                    }
+                                }
+                                if (data["summary"] != null) {
+                                    for (var i = 0; i < keywords.length; i++) {
+                                        if (keywords[i].length == 1) {
+                                            continue;
+                                        }
+                                        counter += 10 * (data["summary"].toLowerCase().split(keywords[i]).length - 1);
+                                    }
+                                }
+                                if (counter > 0) {
+                                    search.listOfFiles.push([file, counter]);
+                                }
+                                search.listOfMeta[file] = { "name": data["name"], "summary": data["summary"], "count": counter };
+                                search.counter++;
+                            }
+                        })).done(function () {
+                            if (search.counter == search.init) {
+                                search.searchDone(text);
+                            }
+                        });
                     }
                 }
             })).done(function () {
@@ -137,7 +167,6 @@ var main;
             this.loadPageJSON(filename);
         };
         Main.loadPageMD = function (filename) {
-            console.log("aaaa");
             $.ajax({
                 url: "md/" + filename + ".md",
                 success: function (data) {
@@ -261,5 +290,14 @@ $(document).ready(new function () {
     main.View.fixMenu();
     $(document).scroll(main.View.fixMenu);
     $(window).resize(main.View.fixMenu);
+    $(function () {
+        $('#searchform').on('submit', function (e) {
+            e.preventDefault();
+            var data = $("#searchquery").val();
+            window.location.href = "/#/search/" + encodeURIComponent(data);
+            $("#searchquery").val("");
+            return false;
+        });
+    });
 });
 //# sourceMappingURL=modules.js.map

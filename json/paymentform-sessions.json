@@ -1,0 +1,11 @@
+{
+    "title": "Payment Forms",
+    "name": "Payment Forms Sessions",
+    "summary": "Explains the concept of sessions that allows you to customize the form (such as pricing, header, etc)",
+    "color": "#cc3300",
+    "text": "white",
+    "showmenu": "true",
+    "menu": ".payment-form.menu",
+    "prev": "#payment-request",
+    "next": null
+}

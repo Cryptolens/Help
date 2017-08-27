@@ -1,5 +1,6 @@
 {
         "Introduction": "#payment-intro",
         "Example": "#payment-example",
-        "Request Items": "#payment-request"
+        "Request Items": "#payment-request",
+        "Sessions": "#paymentform-sessions"
 }
