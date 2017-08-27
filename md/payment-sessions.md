@@ -12,3 +12,11 @@ In order to create a session, you need to call `CreateSession` in the Web API. T
 You should only call this method from your own server side and never directly from the application. If you do the latter, the user can get hold
 of the access token and create a session that has price set to zero and thus be able to execute the requests that should only be called upon a successful
 transaction.
+
+To open a payment form using a session, you only need to provide the sessionId that you received using `CreateSession` method.
+
+```
+https://serialkeymanager.com/form/p/secret/12?sessionId=WyIxMiIsInF1MjdXTXk5MnprSEpuZytHQUdFMVd6VDVSSzQ2K2ZhRkJReCswVzYiXQ==
+```
+
+A session will only work once and it will eventually expire depending on configuration.
