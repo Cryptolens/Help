@@ -1,0 +1,11 @@
+{
+    "title": "Web Interface",
+    "color": "#003333",
+    "name": "Searching for Licenses using Linq Queries",
+    "summary": "Explains the way you can use linq queries on the product page to search for keys that satisfy certain properties.",
+    "text": "white",
+    "showmenu": "true",
+    "menu" : ".platform.menu",
+    "next": null,
+    "prev": null
+}
