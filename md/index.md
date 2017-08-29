@@ -92,6 +92,16 @@
     </div>
     Collection of tutorials about the functionality in our web interface.
 </div>
+<div class="col-md-4">
+    <div class="panel panel-default">
+       <a href="https://blog.skmapp.com/2016/09/how-to-keep-your-start-up-safe/" style="text-decoration:none;">
+        <div class="panel-body" style="background-color:#003366;">
+            <h3 class="text-center" style="color:white;">Security Advice</h3> 
+        </div>
+    </a>
+    </div>
+    Several security considerations to secure your company.
+</div>
 <!--<div class="col-md-4">
       <div class="panel panel-default">
        <a href="http://api.serialkeymanager.com/html/G_SKM.htm" style="text-decoration:none;">
