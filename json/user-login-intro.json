@@ -1,0 +1,11 @@
+{
+    "title": "Web Interface",
+    "color": "#003333",
+    "name": "User Login Authentication (Intro)",
+    "summary": "Introduction to how you can allow users to use their account instead of license key to get hold of their licenses.",
+    "text": "white",
+    "showmenu": "true",
+    "menu" : ".platform.menu",
+    "next": null,
+    "prev": null
+}
