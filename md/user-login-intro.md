@@ -20,4 +20,4 @@ As a vendor, there are three steps that will make it possible for your customers
 
 <img src="/images/user-login-auth-2.svg" style="width:100%;">
 
-<a href="/content/User Login Auth Demo.pdf" target="_blank">View all steps in higher resolution</a>
+<a href="/content/user-login-auth-demo.pdf" target="_blank">View all steps in higher resolution</a>

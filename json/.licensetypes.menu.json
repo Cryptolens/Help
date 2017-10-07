@@ -1,5 +1,6 @@
 {
         "Introduction": "#licensetypes",
         "Perpetual": "#perpetual",
-        "Subscription": "#subscription"
+        "Subscription": "#subscription",
+        "User Login Auth": "#user-login-intro"
 }
