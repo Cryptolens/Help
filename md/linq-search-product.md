@@ -15,54 +15,56 @@ Let's say that you want to look at a license (or several licenses) with a certai
 * `key.contains("ITVBC")` - All keys that contain "ITVBC".
 
 
-<h3>Sorting "Created" and "Expires"</h3>
-Say you want to look at licenses that were created at a certain point in time or that will expire at a given date. Or, maybe you are interested in a certain interval, for instance keys created a yesterday or a month ago. Here are some examples:
-<ul>
-	<li><span class="lang:default decode:true crayon-inline">created = today</span> - Keys created today only.</li>
-	<li><span class="lang:default decode:true crayon-inline">created &gt;= yesterday</span> - Keys created today and yesterday. We could also type <span class="lang:default decode:true crayon-inline">created = today or created = yesterday</span>.</li>
-	<li><span class="lang:default decode:true crayon-inline ">created &gt;= DateTime(2015,01,01)</span> - Keys that were created in the beginning of 2015.</li>
-	<li><span class="lang:default decode:true crayon-inline ">expires &lt;= DateTime(2016,01,01)</span> - Keys that will expire no later than the beginning of 2016.</li>
-</ul>
-variables
+### Sorting "Created" and "Expires"
 
-In addition, you can use variables such as <span class="lang:default decode:true crayon-inline ">tomorrow</span> , <span class="lang:default decode:true crayon-inline ">monthback</span> , <span class="lang:default decode:true crayon-inline ">monthforward</span> .
-<h3>Sorting by "Period"</h3>
+Say you want to look at licenses that were created at a certain point in time or that will expire at a given date. Or, maybe you are interested in a certain interval, for instance keys created a yesterday or a month ago. Here are some examples:
+
+* `created = today` - Keys created today only.
+* `created >= yesterday` - Keys created today and yesterday. We could also type `created = today or created = yesterday`.
+* `created >= DateTime(2015,01,01)` - Keys that were created in the beginning of 2015.
+* `expires <= DateTime(2016,01,01)` - Keys that will expire no later than the beginning of 2016.
+
+#### Variables
+
+In addition, you can use variables such as `tomorrow`, `monthback`, `monthforward`>.
+
+### Sorting by "Period"
 If you choose to have a time limited license, such as those that are used in a subscription, the period becomes important. You can sort keys based on the period as follows:
-<ul>
-	<li><span class="lang:default decode:true crayon-inline ">period = 30</span> - Keys that have a period equal to 30</li>
-</ul>
-<h3>Sorting features "F1,..., F8"</h3>
+* `period = 30` - Keys that have a period equal to 30.
+
+### Sorting features "F1,..., F8"
 Features can be sorted also. Note, although features are represented as 1's and 0's, these are actually referring to a Boolean type, i.e. True or False.
 <ul>
 	<li><span class="lang:default decode:true crayon-inline">F1 = true</span> - Keys that have feature1 set to true (or 1 on the product page).</li>
 </ul>
-<h3>Searching The Notes Field</h3>
+
+### Searching The Notes Field
 Notes field can be sorted in a similar way as Key (see above). Here are some of the examples.
-<ul>
-	<li><span class="lang:default decode:true crayon-inline">notes="Bob"</span> - Keys where Notes is equal to "Bob"</li>
-	<li><span class="lang:default decode:true crayon-inline">notes.contains("to Bob")</span> -  Keys where Notes contains "to Bob"</li>
-</ul>
-<h3>Sorting by Block</h3>
+* `notes="Bob"` - Keys where Notes is equal to "Bob"
+* `notes.contains("to Bob")` -  Keys where Notes contains "to Bob"
+
+
+### Sorting by Block
 Block can be sorted similar to Features. "Yes" and "No" refer to the Boolean values "True" and "False", respectively.
-<ul>
-	<li> <span class="lang:default decode:true crayon-inline ">block=true</span> - Keys that are blocked (block=yes/true).</li>
-</ul>
-<h3>Sorting based on Customer</h3>
+
+* `block=true` - Keys that are blocked (block=yes/true).
+
+### Sorting based on Customer
 A customer object has four fields that can be used when sorting licenses.
-<ul>
-	<li><b>Id</b> - (a number, similar to ID field sorting).</li>
-	<li><strong>Name</strong> - (a string, similar to notes field sorting).</li>
-	<li><strong>Email</strong> - (a string, similar to notes field sorting).</li>
-	<li><strong>CompanyName</strong> - (a string, similar to notes field sorting).</li>
-	<li><strong>Created </strong>- (a date, similar to Created field sorting).</li>
-</ul>
+
+* **Id** - (a number, similar to ID field sorting).
+* **Name** - (a string, similar to notes field sorting).
+* **Email** - (a string, similar to notes field sorting).
+* **CompanyName** - (a string, similar to notes field sorting).
+* **Created** - (a date, similar to Created field sorting).
+
 Here are some sample queries:
-<ul>
-	<li><span class="lang:default decode:true crayon-inline">customer.name="Bob"</span> - Keys where the Customer's name is "Bob"</li>
-	<li><span class="lang:default decode:true crayon-inline">customer.id=3</span> - Keys where where Customer's id is 3.</li>
-	<li><span class="lang:default decode:true crayon-inline">customer.created= today</span> - Keys where the Customer's creation date is set to today.</li>
-</ul>
-<h3>Sorting based on Activated Devices</h3>
+* `customer.name="Bob"` - Keys where the Customer's name is "Bob"
+* `customer.id=3` - Keys where where Customer's id is 3.
+* `customer.created= today` - Keys where the Customer's creation date is set to today.
+
+
+### Sorting based on Activated Devices
 The Activated Devices (aka Activated Machines) is stored as a list of elements that contain three fields:
 <ul>
 	<li><strong>Mid</strong> - (machine code of the device)</li>
