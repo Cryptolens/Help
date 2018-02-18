@@ -2,7 +2,7 @@
     "compileOnSave": true,
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "amd",
         "sourceMap": true,
         "removeComments": true,
         "outFile": "js/modules.js"

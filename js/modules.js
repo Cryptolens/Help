@@ -139,13 +139,13 @@ var main;
             }
             return false;
         };
+        search.listOfFiles = [];
+        search.finished = [];
+        search.init = 0;
+        search.counter = 0;
+        search.listOfMeta = {};
         return search;
     }());
-    search.listOfFiles = [];
-    search.finished = [];
-    search.init = 0;
-    search.counter = 0;
-    search.listOfMeta = {};
     main.search = search;
 })(main || (main = {}));
 var main;
@@ -168,12 +168,10 @@ var main;
         };
         Main.loadPageMD = function (filename) {
             $.ajax({
-                url: "md/" + filename + ".md",
+                url: "md/" + filename + ".md?d=" + Date.now(),
                 success: function (data) {
                     var res = marked(data);
                     $('#markdowcontent').html(res);
-                    ga('set', 'page', "/#" + filename);
-                    ga('send', 'pageview');
                 },
                 error: Main.errorPage
             });
@@ -181,7 +179,7 @@ var main;
         Main.loadPageJSON = function (filename) {
             $.ajax({
                 dataType: "json",
-                url: "json/" + filename + ".json",
+                url: "json/" + filename + ".json?d=" + Date.now(),
                 success: function (data) {
                     if (data["title"]) {
                         document.title = data["title"];
@@ -217,7 +215,7 @@ var main;
                 else {
                     $.ajax({
                         dataType: "json",
-                        url: "json/" + data["menu"] + ".json",
+                        url: "json/" + data["menu"] + ".json?d=" + Date.now(),
                         success: function (freshMenu) {
                             main.storage.store("skm.menu." + data["menu"], freshMenu, 10);
                             main.Main.displayMenuFromData(freshMenu, data);

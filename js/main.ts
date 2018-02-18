@@ -1,6 +1,8 @@
 /**
- * Copyright (C) 2016 Artem Los. All rights reserved.
+ * Copyright (C) 2018 Cryptolens AB. All rights reserved.
+ * @author Artem Los
  */
+
 module main {
 
     /**
@@ -38,12 +40,12 @@ module main {
         private static loadPageMD(filename: string) {
 
             $.ajax({
-                url: "md/" + filename + ".md",
+                url: `md/${filename}.md?d=${Date.now()}`,
                 success: function (data) {
                     var res = marked(data);
                     $('#markdowcontent').html(res);
-                    ga('set', 'page', `/#${filename}`);
-                    ga('send', 'pageview');
+                    //ga('set', 'page', `/#${filename}`);
+                    //ga('send', 'pageview');
                 },
                 error: Main.errorPage
             });
@@ -52,7 +54,7 @@ module main {
         private static loadPageJSON(filename: string) {
             $.ajax({
                 dataType: "json",
-                url: "json/" + filename + ".json",
+                url: `json/${filename}.json?d=${Date.now()}`,
                 success: function (data) {
 
                     if (data["title"]) {
@@ -95,7 +97,7 @@ module main {
                 } else {
                     $.ajax({
                         dataType: "json",
-                        url: `json/${data["menu"]}.json`,
+                        url: `json/${data["menu"]}.json?d=${Date.now()}`,
                         success: function (freshMenu) {
                             storage.store(`skm.menu.${data["menu"]}`, freshMenu, 10);
                             main.Main.displayMenuFromData(freshMenu, data);
