@@ -6,7 +6,7 @@ Our application will have two places where we will need to insert the code:
 * During license key registration - the first time the user inserts a license key
 * During application start - to check for existing license on launch
 
-You can download the source code <a href="/tutorials/sourcecode.zip" target="_blank">here</a>.
+You can download the source code <a href="https://github.com/SerialKeyManager/Examples/tree/master/Digital%20Tools%20Collection" target="_blank">here</a>.
 
 ## License Key Registration
 
