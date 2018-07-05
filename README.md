@@ -1,6 +1,8 @@
 # SKM Wiki Engine
 This repository contains a wiki engine and wiki articles for SKM's help page.
 
+> Note, we currently store all documentatin at https://github.com/Cryptolens/docs. This repository is kept as a reference only and will no longer be updated.
+
 ## Introduction
 It's very easy to use this engine to host your own wiki. There are four different types of files:
 
